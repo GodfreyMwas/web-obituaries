@@ -4,94 +4,21 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title id="site-title">Web Obituaries</title>
 
-<title>Web Obituaries — Honoring Lives</title>
-
-<style>
-
-body{
-margin:0;
-font-family:Georgia,serif;
-background:#f6f3ee;
-color:#333;
-}
-
-header{
-background:linear-gradient(135deg,#3f4c6b,#606c88);
-color:white;
-padding:60px 20px;
-text-align:center;
-}
-
-.container{
-max-width:1000px;
-margin:auto;
-padding:40px 20px;
-}
-
-h2{
-text-align:center;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-gap:18px;
-}
-
-.card{
-background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 4px 10px rgba(0,0,0,0.08);
-text-align:center;
-}
-
-.card:hover{
-transform:translateY(-3px);
-}
-
-button{
-background:#4b5d73;
-color:white;
-border:none;
-padding:10px 18px;
-border-radius:6px;
-cursor:pointer;
-}
-
-textarea{
-width:100%;
-height:90px;
-border-radius:6px;
-border:1px solid #ccc;
-padding:8px;
-}
-
-footer{
-background:#3f4c6b;
-color:white;
-text-align:center;
-padding:20px;
-margin-top:40px;
-}
-
-.language{
-position:absolute;
-top:20px;
-right:20px;
-}
-
-</style>
+<link rel="stylesheet" href="css/styles.css">
 
 </head>
 
 <body>
 
-<div class="language">
+<header>
 
-<select onchange="changeLanguage(this.value)">
+<h1 id="site-title">Web Obituaries</h1>
+
+<p>Honoring Lives</p>
+
+<select id="language-switch">
 
 <option value="en">English</option>
 <option value="sw">Swahili</option>
@@ -100,157 +27,40 @@ right:20px;
 
 </select>
 
-</div>
-
-<header>
-
-<h1 id="title">Web Obituaries</h1>
-
-<p id="subtitle">Honoring Lives • Preserving Memories</p>
-
 </header>
 
-<div class="container">
+<nav>
 
-<h2 id="searchTitle">Search Obituaries</h2>
+<a href="#">Home</a>
+<a href="#">Add Loved One</a>
+<a href="#">Funeral Announcements</a>
+<a href="#">Condolences</a>
 
-<input style="width:100%;padding:10px;border-radius:6px;border:1px solid #ccc;" placeholder="Search name or county">
+</nav>
 
-<br><br>
+<section>
 
-<h2 id="categoryTitle">Memorial Categories</h2>
+<h2>Light a Candle</h2>
 
-<div class="grid">
+<button onclick="lightCandle()">🕯 Light Candle</button>
 
-<div class="card">Leaders</div>
-<div class="card">Elders</div>
-<div class="card">Parents</div>
-<div class="card">Children</div>
-<div class="card">Spouses</div>
-<div class="card">Entertainers</div>
-<div class="card">Sports</div>
-<div class="card">Teachers</div>
-<div class="card">Medical Workers</div>
-<div class="card">Soldiers</div>
-<div class="card">Police</div>
-<div class="card">Firefighters</div>
-<div class="card">Humanitarians</div>
-<div class="card">Community Heroes</div>
-<div class="card">National Heroes</div>
+<p id="candleCount">0 Candles Lit</p>
 
-</div>
+</section>
 
-<br><br>
+<section>
 
-<h2 id="candleTitle">Light a Memorial Candle</h2>
+<h2>Send Virtual Flowers</h2>
 
-<div class="card">
+<button onclick="sendFlower('rose')">🌹 Send Rose</button>
+<button onclick="sendFlower('lily')">🌸 Send Lily</button>
 
-<div style="font-size:40px;cursor:pointer;" onclick="lightCandle()">🕯</div>
+<p id="flowerCount">0 Flowers Sent</p>
 
-<p id="candleText">Click the candle to light it in remembrance</p>
+</section>
 
-</div>
-
-<br><br>
-
-<h2 id="condolenceTitle">Leave a Condolence</h2>
-
-<div class="card">
-
-<textarea placeholder="Write your condolence"></textarea>
-
-<br><br>
-
-<button onclick="sendMessage()" id="sendBtn">Send Message</button>
-
-<p id="sentMessage"></p>
-
-</div>
-
-<br><br>
-
-<h2>Kenya Counties</h2>
-
-<div class="card">
-
-Mombasa • Kwale • Kilifi • Tana River • Lamu • Taita Taveta • Garissa • Wajir • Mandera • Marsabit • Isiolo • Meru • Tharaka Nithi • Embu • Kitui • Machakos • Makueni • Nyandarua • Nyeri • Kirinyaga • Murang'a • Kiambu • Turkana • West Pokot • Samburu • Trans Nzoia • Uasin Gishu • Elgeyo Marakwet • Nandi • Baringo • Laikipia • Nakuru • Narok • Kajiado • Kericho • Bomet • Kakamega • Vihiga • Bungoma • Busia • Siaya • Kisumu • Homa Bay • Migori • Kisii • Nyamira • Nairobi
-
-</div>
-
-<br><br>
-
-<h2 id="remembranceTitle">National Remembrance Day</h2>
-
-<div class="card">
-
-A day dedicated to honoring the memories and legacies of loved ones who shaped our families and communities.
-
-</div>
-
-<br><br>
-
-<div class="card">
-
-<b>Bible</b>  
-“Blessed are those who mourn, for they shall be comforted.”
-
-<br><br>
-
-<b>Qur'an</b>  
-“Indeed we belong to God, and indeed to Him we return.”
-
-</div>
-
-</div>
-
-<footer>
-
-© 2026 Web Obituaries — Honoring Lives
-
-</footer>
-
-<audio autoplay loop>
-
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3f6e2c.mp3">
-
-</audio>
-
-<script>
-
-function lightCandle(){
-document.getElementById("candleText").innerText="The candle is now burning in remembrance.";
-}
-
-function sendMessage(){
-document.getElementById("sentMessage").innerText="Your condolence has been shared.";
-}
-
-function changeLanguage(lang){
-
-if(lang=="sw"){
-title.innerText="Tovuti ya Kumbukumbu";
-subtitle.innerText="Kuheshimu Maisha • Kuhifadhi Kumbukumbu";
-}
-
-if(lang=="fr"){
-title.innerText="Nécrologies Web";
-subtitle.innerText="Honorer les vies • Préserver les souvenirs";
-}
-
-if(lang=="ar"){
-title.innerText="وفيات الويب";
-subtitle.innerText="تكريم الحياة • حفظ الذكريات";
-}
-
-if(lang=="en"){
-title.innerText="Web Obituaries";
-subtitle.innerText="Honoring Lives • Preserving Memories";
-}
-
-}
-
-</script>
+<script src="js/app.js"></script>
+<script src="js/language.js"></script>
 
 </body>
 
