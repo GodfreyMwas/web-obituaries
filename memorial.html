@@ -3,36 +3,50 @@
 
 <head>
 
-<title>Memorial Page</title>
+<title>Loved One Memorial Page</title>
+
 <link rel="stylesheet" href="css/styles.css">
+
+<script src="js/memorial.js"></script>
 
 </head>
 
 <body>
 
+<div id="floatingCandles"></div>
+
+<button onclick="toggleMusic()">🔊 Toggle Music</button>
+
+<audio id="bgMusic" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mpeg">
+</audio>
+
 <h1 id="memorialName">Loved One</h1>
 
-<p id="memorialDates">Date of Birth - Date of Passing</p>
+<p id="memorialDates"></p>
 
 <img id="memorialPhoto" width="200">
 
 <h2>Life Story</h2>
-
 <p id="memorialBio"></p>
 
 <h2>Light a Candle</h2>
 
-<button onclick="lightCandle()">🕯 Light Candle</button>
+<button onclick="lightCandle('hope')">🕯 Hope</button>
+<button onclick="lightCandle('love')">❤️ Love</button>
+<button onclick="lightCandle('peace')">🕊 Peace</button>
 
 <p id="candleCount">0 Candles Lit</p>
+<div id="candleMessage"></div>
 
 <h2>Send Flowers</h2>
 
 <button onclick="sendFlower('rose')">🌹 Rose</button>
 <button onclick="sendFlower('lily')">🌸 Lily</button>
+<button onclick="sendFlower('daisy')">🌼 Daisy</button>
 
 <p id="flowerCount">0 Flowers Sent</p>
-
+<div id="flowerMessage"></div>
 
 <h2>Condolence Wall</h2>
 
@@ -43,6 +57,7 @@
 <button onclick="postCondolence()">Post Message</button>
 
 <div id="condolenceList"></div>
+
 </body>
 
 </html>
