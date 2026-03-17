@@ -1,97 +1,64 @@
-let candleCount = 0
-let flowerCount = 0
+let candles=0
+let flowers=0
 
-// 🕯 Candle system
+function showPopup(msg){
+popupText.innerText=msg
+popup.style.display="block"
+setTimeout(()=>popup.style.display="none",2000)
+}
+
 function lightCandle(type){
-
-const meanings = {
-hope: "A candle of hope for brighter days.",
-love: "A candle of love that never fades.",
-peace: "A candle of peace for eternal rest."
+candles++
+candleCount.innerText=candles
+showPopup(type+" candle lit 🕯")
 }
 
-candleCount++
-
-document.getElementById("candleCount").innerText =
-candleCount + " Candles Lit"
-
-const msg = document.getElementById("candleMessage")
-msg.innerText = meanings[type]
-
-msg.classList.add("animate")
-setTimeout(()=>msg.classList.remove("animate"),400)
-
-}
-
-// 🌹 Flower system
 function sendFlower(type){
-
-const meanings = {
-rose: "Rose: Love and remembrance.",
-lily: "Lily: Purity and peace.",
-daisy: "Daisy: Innocence and new beginnings."
+flowers++
+flowerCount.innerText=flowers
+showPopup(type+" sent 🌸")
 }
 
-flowerCount++
-
-document.getElementById("flowerCount").innerText =
-flowerCount + " Flowers Sent"
-
-const msg = document.getElementById("flowerMessage")
-msg.innerText = meanings[type]
-
-msg.classList.add("animate")
-setTimeout(()=>msg.classList.remove("animate"),400)
-
-}
-
-// 💬 Condolence wall
-function postCondolence(){
-
-const name = document.getElementById("condolenceName").value
-const message = document.getElementById("condolenceMessage").value
-
-const list = document.getElementById("condolenceList")
-
-const div = document.createElement("div")
-
-div.innerHTML = "<strong>" + name + "</strong>: " + message
-
-list.appendChild(div)
-
-}
-
-// 🕯 Floating candles animation
-function createFloatingCandle(){
-
-const candle = document.createElement("div")
-candle.className = "candle"
-candle.innerText = "🕯"
-
-candle.style.left = Math.random() * window.innerWidth + "px"
-candle.style.animationDuration =
-(5 + Math.random() * 5) + "s"
-
-document.getElementById("floatingCandles").appendChild(candle)
-
-setTimeout(()=>{
-candle.remove()
-},8000)
-
-}
-
-setInterval(createFloatingCandle,2000)
-
-
-// 🎵 Music
 function toggleMusic(){
-
-const music = document.getElementById("bgMusic")
-
-if(music.paused){
-music.play()
+if(bgMusic.paused){
+bgMusic.play()
+musicBtn.innerText="Pause Music"
 }else{
-music.pause()
+bgMusic.pause()
+musicBtn.innerText="Play Music"
+}
 }
 
+function addCondolence(){
+if(condolenceInput.value==="")return
+const p=document.createElement("p")
+p.innerText=condolenceInput.value
+condolenceWall.appendChild(p)
+condolenceInput.value=""
 }
+
+function sendFamily(){
+if(familyInput.value==="")return
+const d=document.createElement("div")
+d.innerText="👤 "+familyInput.value
+familyWall.appendChild(d)
+familyInput.value=""
+}
+
+/* Creative floating */
+setInterval(()=>{
+const el=document.createElement("div")
+el.innerText="✨"
+el.style.position="fixed"
+el.style.left=Math.random()*100+"vw"
+el.style.top="100vh"
+document.body.appendChild(el)
+
+let pos=100
+const move=setInterval(()=>{
+pos--
+el.style.top=pos+"vh"
+if(pos<0){clearInterval(move);el.remove()}
+},40)
+
+},1500)
