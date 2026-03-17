@@ -2,66 +2,39 @@
 <html lang="en">
 
 <head>
-
-<meta charset="UTF-8">
-<title id="site-title">Web Obituaries</title>
-
-<link rel="stylesheet" href="css/styles.css">
-
+  <meta charset="UTF-8">
+  <title>Web Obituaries</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
 
-<header>
-
-<h1 id="site-title">Web Obituaries</h1>
-
-<p>Honoring Lives</p>
-
-<select id="language-switch">
-
-<option value="en">English</option>
-<option value="sw">Swahili</option>
-<option value="fr">French</option>
-<option value="ar">Arabic</option>
-
-</select>
-
+<header style="text-align:center; padding:40px;">
+  <h1>Web Obituaries</h1>
+  <p>Honoring Lives, Sharing Memories</p>
 </header>
 
-<nav>
-
-<a href="#">Home</a>
-<a href="add-loved-one.html">Add Loved One</a>
-<a href="#">Funeral Announcements</a>
-<a href="#">Condolences</a>
-
+<nav style="text-align:center;">
+  <a href="index.html">Home</a> |
+  <a href="add-loved-one.html">Add Loved One</a> |
+  <a href="memorial.html">Memorial Page</a>
 </nav>
 
-<section>
+<div style="text-align:center; margin-top:30px;">
 
-<h2>Light a Candle</h2>
+  <a href="memorial.html">
+    <button>🕯 Open Memorial Page</button>
+  </a>
 
-<button onclick="lightCandle()">🕯 Light Candle</button>
+  <a href="add-loved-one.html">
+    <button>➕ Add Loved One</button>
+  </a>
 
-<p id="candleCount">0 Candles Lit</p>
+</div>
 
-</section>
-
-<section>
-
-<h2>Send Virtual Flowers</h2>
-
-<button onclick="sendFlower('rose')">🌹 Send Rose</button>
-<button onclick="sendFlower('lily')">🌸 Send Lily</button>
-
-<p id="flowerCount">0 Flowers Sent</p>
-
-</section>
-
-<script src="js/app.js"></script>
-<script src="js/language.js"></script>
+<footer style="text-align:center; margin-top:60px;">
+  <p>© 2026 Web Obituaries</p>
+</footer>
 
 </body>
-
 </html>
