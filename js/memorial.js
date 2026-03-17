@@ -1,7 +1,7 @@
 let candleCount = 0
 let flowerCount = 0
 
-// 🕯 CANDLES
+// 🕯 Candle system
 function lightCandle(type){
 
 const meanings = {
@@ -12,7 +12,8 @@ peace: "A candle of peace for eternal rest."
 
 candleCount++
 
-document.getElementById("candleCount").innerText = candleCount + " Candles Lit"
+document.getElementById("candleCount").innerText =
+candleCount + " Candles Lit"
 
 const msg = document.getElementById("candleMessage")
 msg.innerText = meanings[type]
@@ -22,7 +23,7 @@ setTimeout(()=>msg.classList.remove("animate"),400)
 
 }
 
-// 🌹 FLOWERS
+// 🌹 Flower system
 function sendFlower(type){
 
 const meanings = {
@@ -33,7 +34,8 @@ daisy: "Daisy: Innocence and new beginnings."
 
 flowerCount++
 
-document.getElementById("flowerCount").innerText = flowerCount + " Flowers Sent"
+document.getElementById("flowerCount").innerText =
+flowerCount + " Flowers Sent"
 
 const msg = document.getElementById("flowerMessage")
 msg.innerText = meanings[type]
@@ -43,7 +45,7 @@ setTimeout(()=>msg.classList.remove("animate"),400)
 
 }
 
-// 💬 CONDOLENCES
+// 💬 Condolence wall
 function postCondolence(){
 
 const name = document.getElementById("condolenceName").value
@@ -59,7 +61,7 @@ list.appendChild(div)
 
 }
 
-// 🕯 FLOATING CANDLES
+// 🕯 Floating candles animation
 function createFloatingCandle(){
 
 const candle = document.createElement("div")
@@ -67,28 +69,29 @@ candle.className = "candle"
 candle.innerText = "🕯"
 
 candle.style.left = Math.random() * window.innerWidth + "px"
-candle.style.animationDuration = (5 + Math.random() * 5) + "s"
+candle.style.animationDuration =
+(5 + Math.random() * 5) + "s"
 
 document.getElementById("floatingCandles").appendChild(candle)
 
-setTimeout(() => {
-  candle.remove()
-}, 8000)
+setTimeout(()=>{
+candle.remove()
+},8000)
 
 }
 
-setInterval(createFloatingCandle, 2000)
+setInterval(createFloatingCandle,2000)
 
 
-// 🎵 MUSIC
+// 🎵 Music
 function toggleMusic(){
 
 const music = document.getElementById("bgMusic")
 
-if (music.paused) {
-  music.play()
-} else {
-  music.pause()
+if(music.paused){
+music.play()
+}else{
+music.pause()
 }
 
 }
