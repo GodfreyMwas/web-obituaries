@@ -1,61 +1,59 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-<title>Loved One Memorial Page</title>
+<meta charset="UTF-8">
+<title>Memorial</title>
 
-<link rel="stylesheet" href="css/styles.css">
-<script src="js/memorial.js"></script>
+<style>
+body{text-align:center;font-family:Arial;}
+#popup{
+display:none;
+position:fixed;
+top:40%;
+left:30%;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.3);
+}
+</style>
+
 </head>
 
 <body>
 
-<!-- Floating candles -->
-<div id="floatingCandles"></div>
+<h1>Memorial Page</h1>
 
-<!-- Music -->
-<button onclick="toggleMusic()">🔊 Toggle Music</button>
-
-<audio id="bgMusic" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mpeg">
+<button onclick="toggleMusic()" id="musicBtn">Play Music</button>
+<audio id="bgMusic">
+<source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3">
 </audio>
 
-<h1 id="memorialName">Loved One</h1>
-
-<p id="memorialDates"></p>
-
-<img id="memorialPhoto" width="200">
-
-<h2>Life Story</h2>
-<p id="memorialBio"></p>
-
 <h2>Light a Candle</h2>
-
-<button onclick="lightCandle('hope')">🕯 Hope</button>
-<button onclick="lightCandle('love')">❤️ Love</button>
-<button onclick="lightCandle('peace')">🕊 Peace</button>
-
-<p id="candleCount">0 Candles Lit</p>
-<div id="candleMessage"></div>
+<button onclick="lightCandle('Hope')">Hope</button>
+<button onclick="lightCandle('Love')">Love</button>
+<button onclick="lightCandle('Peace')">Peace</button>
+<p id="candleCount">0</p>
 
 <h2>Send Flowers</h2>
+<button onclick="sendFlower('Rose')">Rose</button>
+<button onclick="sendFlower('Lily')">Lily</button>
+<button onclick="sendFlower('Daisy')">Daisy</button>
+<p id="flowerCount">0</p>
 
-<button onclick="sendFlower('rose')">🌹 Rose</button>
-<button onclick="sendFlower('lily')">🌸 Lily</button>
-<button onclick="sendFlower('daisy')">🌼 Daisy</button>
-
-<p id="flowerCount">0 Flowers Sent</p>
-<div id="flowerMessage"></div>
+<div id="popup"><p id="popupText"></p></div>
 
 <h2>Condolence Wall</h2>
+<input id="condolenceInput">
+<button onclick="addCondolence()">Send</button>
+<div id="condolenceWall"></div>
 
-<input id="condolenceName" placeholder="Your name">
+<h2>Family Wall</h2>
+<input id="familyInput">
+<button onclick="sendFamily()">Send</button>
+<div id="familyWall"></div>
 
-<textarea id="condolenceMessage" placeholder="Write a condolence message"></textarea>
-
-<button onclick="postCondolence()">Post Message</button>
-
-<div id="condolenceList"></div>
+<script src="js/memorial.js"></script>
 
 </body>
 </html>
