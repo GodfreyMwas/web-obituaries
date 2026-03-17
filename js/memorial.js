@@ -1,31 +1,94 @@
-function createMemorial(event) {
+let candleCount = 0
+let flowerCount = 0
 
-event.preventDefault()
+// 🕯 CANDLES
+function lightCandle(type){
 
-const name = document.getElementById("name").value
-const birth = document.getElementById("birth").value
-const passing = document.getElementById("passing").value
-const bio = document.getElementById("bio").value
+const meanings = {
+hope: "A candle of hope for brighter days.",
+love: "A candle of love that never fades.",
+peace: "A candle of peace for eternal rest."
+}
 
-localStorage.setItem("memorialName", name)
-localStorage.setItem("memorialBirth", birth)
-localStorage.setItem("memorialPassing", passing)
-localStorage.setItem("memorialBio", bio)
+candleCount++
 
-window.location.href = "memorial.html"
+document.getElementById("candleCount").innerText = candleCount + " Candles Lit"
+
+const msg = document.getElementById("candleMessage")
+msg.innerText = meanings[type]
+
+msg.classList.add("animate")
+setTimeout(()=>msg.classList.remove("animate"),400)
 
 }
 
-function loadMemorial() {
+// 🌹 FLOWERS
+function sendFlower(type){
 
-document.getElementById("memorialName").innerText =
-localStorage.getItem("memorialName")
+const meanings = {
+rose: "Rose: Love and remembrance.",
+lily: "Lily: Purity and peace.",
+daisy: "Daisy: Innocence and new beginnings."
+}
 
-document.getElementById("memorialDates").innerText =
-localStorage.getItem("memorialBirth") + " - " +
-localStorage.getItem("memorialPassing")
+flowerCount++
 
-document.getElementById("memorialBio").innerText =
-localStorage.getItem("memorialBio")
+document.getElementById("flowerCount").innerText = flowerCount + " Flowers Sent"
+
+const msg = document.getElementById("flowerMessage")
+msg.innerText = meanings[type]
+
+msg.classList.add("animate")
+setTimeout(()=>msg.classList.remove("animate"),400)
+
+}
+
+// 💬 CONDOLENCES
+function postCondolence(){
+
+const name = document.getElementById("condolenceName").value
+const message = document.getElementById("condolenceMessage").value
+
+const list = document.getElementById("condolenceList")
+
+const div = document.createElement("div")
+
+div.innerHTML = "<strong>" + name + "</strong>: " + message
+
+list.appendChild(div)
+
+}
+
+// 🕯 FLOATING CANDLES
+function createFloatingCandle(){
+
+const candle = document.createElement("div")
+candle.className = "candle"
+candle.innerText = "🕯"
+
+candle.style.left = Math.random() * window.innerWidth + "px"
+candle.style.animationDuration = (5 + Math.random() * 5) + "s"
+
+document.getElementById("floatingCandles").appendChild(candle)
+
+setTimeout(() => {
+  candle.remove()
+}, 8000)
+
+}
+
+setInterval(createFloatingCandle, 2000)
+
+
+// 🎵 MUSIC
+function toggleMusic(){
+
+const music = document.getElementById("bgMusic")
+
+if (music.paused) {
+  music.play()
+} else {
+  music.pause()
+}
 
 }
