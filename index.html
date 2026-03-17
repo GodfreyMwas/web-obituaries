@@ -1,40 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>Web Obituaries</title>
-  <link rel="stylesheet" href="css/styles.css">
+<meta charset="UTF-8">
+<title>Web Obituaries</title>
+
+<style>
+body{
+font-family:Arial;
+text-align:center;
+background:#f7f7f7;
+}
+
+button{
+padding:10px 20px;
+margin:5px;
+border:none;
+background:#444;
+color:white;
+border-radius:5px;
+}
+
+input,select{
+padding:8px;
+margin:5px;
+}
+</style>
+
 </head>
 
 <body>
 
-<header style="text-align:center; padding:40px;">
-  <h1>Web Obituaries</h1>
-  <p>Honoring Lives, Sharing Memories</p>
-</header>
+<h1 id="title">Web Obituaries</h1>
+<p id="subtitle">Honoring Lives, Sharing Memories</p>
 
-<nav style="text-align:center;">
-  <a href="index.html">Home</a> |
-  <a href="add-loved-one.html">Add Loved One</a> |
-  <a href="memorial.html">Memorial Page</a>
-</nav>
+<!-- Language -->
+<select onchange="changeLang(this.value)">
+<option value="en">English</option>
+<option value="sw">Swahili</option>
+</select>
 
-<div style="text-align:center; margin-top:30px;">
-
-  <a href="memorial.html">
-    <button>🕯 Open Memorial Page</button>
-  </a>
-
-  <a href="add-loved-one.html">
-    <button>➕ Add Loved One</button>
-  </a>
-
+<!-- Navigation -->
+<div>
+<a href="memorial.html"><button>Open Memorial Page</button></a>
+<a href="add-loved-one.html"><button>Add Loved One</button></a>
 </div>
 
-<footer style="text-align:center; margin-top:60px;">
-  <p>© 2026 Web Obituaries</p>
-</footer>
+<!-- Search -->
+<h2 id="searchTitle">Search Memorials</h2>
+
+<input id="year" placeholder="Year">
+
+<select id="county">
+<option>Nairobi</option><option>Mombasa</option><option>Kisumu</option>
+<option>Nakuru</option><option>Kiambu</option><option>Machakos</option>
+<option>Meru</option><option>Kakamega</option><option>Bungoma</option>
+<option>Busia</option><option>Siaya</option><option>Homa Bay</option>
+<option>Migori</option><option>Kisii</option><option>Nyamira</option>
+<option>Nyeri</option><option>Murang'a</option><option>Kirinyaga</option>
+<option>Embu</option><option>Tharaka Nithi</option><option>Kitui</option>
+<option>Makueni</option><option>Kajiado</option><option>Narok</option>
+<option>Laikipia</option><option>Nyandarua</option><option>Baringo</option>
+<option>Samburu</option><option>Turkana</option><option>West Pokot</option>
+<option>Trans Nzoia</option><option>Uasin Gishu</option>
+<option>Elgeyo Marakwet</option><option>Nandi</option>
+<option>Kericho</option><option>Bomet</option><option>Kilifi</option>
+<option>Kwale</option><option>Tana River</option><option>Lamu</option>
+<option>Garissa</option><option>Wajir</option><option>Mandera</option>
+<option>Marsabit</option><option>Isiolo</option><option>Taita Taveta</option>
+</select>
+
+<select id="category">
+<option>Children</option>
+<option>Elders</option>
+<option>Tragedies</option>
+</select>
+
+<br>
+<button onclick="search()">Search</button>
+<p id="results"></p>
+
+<!-- Announcements -->
+<h2>Funeral Announcements</h2>
+<p>Burial announcements will appear here</p>
+
+<!-- Condolences preview -->
+<h2>Recent Condolences</h2>
+<p>Messages of support will appear here</p>
+
+<script>
+function search(){
+document.getElementById("results").innerText="Searching..."
+}
+
+function changeLang(lang){
+if(lang==="sw"){
+title.innerText="Kumbukumbu za Wapendwa"
+subtitle.innerText="Kuheshimu Maisha"
+searchTitle.innerText="Tafuta"
+}else{
+title.innerText="Web Obituaries"
+subtitle.innerText="Honoring Lives"
+searchTitle.innerText="Search Memorials"
+}
+}
+</script>
 
 </body>
 </html>
