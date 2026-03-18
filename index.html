@@ -1,107 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Web Obituaries</title>
+  <meta charset="UTF-8">
+  <title>Web Obituaries</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body{
-font-family:Arial;
-text-align:center;
-background:#f7f7f7;
-}
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0f1a;
+      color: white;
+      text-align: center;
+      margin: 0;
+    }
 
-button{
-padding:10px 20px;
-margin:5px;
-border:none;
-background:#444;
-color:white;
-border-radius:5px;
-}
+    .container {
+      padding: 20px;
+    }
 
-input,select{
-padding:8px;
-margin:5px;
-}
-</style>
+    input, select, button {
+      padding: 10px;
+      margin: 5px;
+      border-radius: 5px;
+      border: none;
+    }
 
+    button {
+      background: gold;
+      cursor: pointer;
+    }
+
+    .card {
+      background: #12182b;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 
 <body>
 
 <h1 id="title">Web Obituaries</h1>
-<p id="subtitle">Honoring Lives, Sharing Memories</p>
+<p id="subtitle">Honoring Lives</p>
 
-<!-- Language -->
-<select onchange="changeLang(this.value)">
-<option value="en">English</option>
-<option value="sw">Swahili</option>
-</select>
+<button onclick="changeLang('en')">EN</button>
+<button onclick="changeLang('sw')">SW</button>
 
-<!-- Navigation -->
-<div>
-<a href="memorial.html"><button>Open Memorial Page</button></a>
-<a href="add-loved-one.html"><button>Add Loved One</button></a>
+<div class="container">
+
+  <h2 id="searchTitle">Search Memorials</h2>
+
+  <input id="name" placeholder="Name">
+  <input id="year" placeholder="Year">
+
+  <select id="county">
+    <option value="">Select County</option>
+    <option>Baringo</option>
+    <option>Bomet</option>
+    <option>Bungoma</option>
+    <option>Busia</option>
+    <option>Elgeyo-Marakwet</option>
+    <option>Embu</option>
+    <option>Garissa</option>
+    <option>Homa Bay</option>
+    <option>Isiolo</option>
+    <option>Kajiado</option>
+    <option>Kakamega</option>
+    <option>Kericho</option>
+    <option>Kiambu</option>
+    <option>Kilifi</option>
+    <option>Kirinyaga</option>
+    <option>Kisii</option>
+    <option>Kisumu</option>
+    <option>Kitui</option>
+    <option>Kwale</option>
+    <option>Laikipia</option>
+    <option>Lamu</option>
+    <option>Machakos</option>
+    <option>Makueni</option>
+    <option>Mandera</option>
+    <option>Marsabit</option>
+    <option>Meru</option>
+    <option>Migori</option>
+    <option>Mombasa</option>
+    <option>Murang'a</option>
+    <option>Nairobi</option>
+    <option>Nakuru</option>
+    <option>Nandi</option>
+    <option>Narok</option>
+    <option>Nyamira</option>
+    <option>Nyandarua</option>
+    <option>Nyeri</option>
+    <option>Samburu</option>
+    <option>Siaya</option>
+    <option>Taita-Taveta</option>
+    <option>Tana River</option>
+    <option>Tharaka-Nithi</option>
+    <option>Trans Nzoia</option>
+    <option>Turkana</option>
+    <option>Uasin Gishu</option>
+    <option>Vihiga</option>
+    <option>Wajir</option>
+    <option>West Pokot</option>
+  </select>
+
+  <br>
+
+  <button onclick="search()">Search</button>
+
+  <div id="results"></div>
+
 </div>
 
-<!-- Search -->
-<h2 id="searchTitle">Search Memorials</h2>
-
-<input id="year" placeholder="Year">
-
-<select id="county">
-<option>Nairobi</option><option>Mombasa</option><option>Kisumu</option>
-<option>Nakuru</option><option>Kiambu</option><option>Machakos</option>
-<option>Meru</option><option>Kakamega</option><option>Bungoma</option>
-<option>Busia</option><option>Siaya</option><option>Homa Bay</option>
-<option>Migori</option><option>Kisii</option><option>Nyamira</option>
-<option>Nyeri</option><option>Murang'a</option><option>Kirinyaga</option>
-<option>Embu</option><option>Tharaka Nithi</option><option>Kitui</option>
-<option>Makueni</option><option>Kajiado</option><option>Narok</option>
-<option>Laikipia</option><option>Nyandarua</option><option>Baringo</option>
-<option>Samburu</option><option>Turkana</option><option>West Pokot</option>
-<option>Trans Nzoia</option><option>Uasin Gishu</option>
-<option>Elgeyo Marakwet</option><option>Nandi</option>
-<option>Kericho</option><option>Bomet</option><option>Kilifi</option>
-<option>Kwale</option><option>Tana River</option><option>Lamu</option>
-<option>Garissa</option><option>Wajir</option><option>Mandera</option>
-<option>Marsabit</option><option>Isiolo</option><option>Taita Taveta</option>
-</select>
-
-<select id="category">
-<option>Children</option>
-<option>Elders</option>
-<option>Tragedies</option>
-</select>
-
-<br>
-<button onclick="search()">Search</button>
-<p id="results"></p>
-
-<!-- Announcements -->
-<h2>Funeral Announcements</h2>
-<p>Burial announcements will appear here</p>
-
-<!-- Condolences preview -->
-<h2>Recent Condolences</h2>
-<p>Messages of support will appear here</p>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
 <script>
-function search(){
-document.getElementById("results").innerText="Searching..."
+const SUPABASE_URL = "https://qubcvsruvwsomjigcuti.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1YmN2c3J1dndzb21qaWdjdXRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4MDc1MzYsImV4cCI6MjA4OTM4MzUzNn0.W7wvWzNbKaqTbwRZlucGnWpKBtgGf_zCNhf-jyC5n-8";
+
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// SEARCH FUNCTION
+async function search(){
+  document.getElementById("results").innerText = "Searching...";
+
+  let name = document.getElementById("name").value;
+  let year = document.getElementById("year").value;
+  let county = document.getElementById("county").value;
+
+  let query = supabase.from("memorials").select("*");
+
+  if(name) query = query.ilike("name", `%${name}%`);
+  if(year) query = query.eq("year", year);
+  if(county) query = query.eq("county", county);
+
+  const { data, error } = await query;
+
+  if(error){
+    document.getElementById("results").innerText = "Error loading";
+    return;
+  }
+
+  if(data.length === 0){
+    document.getElementById("results").innerText = "No results";
+    return;
+  }
+
+  document.getElementById("results").innerHTML =
+    data.map(d => `<div class="card">${d.name} - ${d.county}</div>`).join("");
 }
 
+// LANGUAGE SWITCH
 function changeLang(lang){
-if(lang==="sw"){
-title.innerText="Kumbukumbu za Wapendwa"
-subtitle.innerText="Kuheshimu Maisha"
-searchTitle.innerText="Tafuta"
-}else{
-title.innerText="Web Obituaries"
-subtitle.innerText="Honoring Lives"
-searchTitle.innerText="Search Memorials"
-}
+  if(lang === "sw"){
+    document.getElementById("title").innerText = "Kumbukumbu za Wapendwa";
+    document.getElementById("subtitle").innerText = "Kuheshimu Maisha";
+    document.getElementById("searchTitle").innerText = "Tafuta";
+  } else {
+    document.getElementById("title").innerText = "Web Obituaries";
+    document.getElementById("subtitle").innerText = "Honoring Lives";
+    document.getElementById("searchTitle").innerText = "Search Memorials";
+  }
 }
 </script>
 
