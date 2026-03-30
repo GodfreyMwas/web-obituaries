@@ -1,9 +1,10 @@
 // js/supabase-client.js
-// Your real Supabase connection - DO NOT change these unless you create a new project
+// Real Supabase connection for your web-obituaries platform
 const supabaseUrl = 'https://dynplmitzoxnxusmivno.supabase.co';
-const supabasePublishableKey = 'sb_publishable_WyJIHw24t8zpcuiMsIta0A_5o45oDFM';
+const supabaseAnonKey = 'sb_publishable_WyJIHw24t8zpcuiMsIta0A_5o45oDFM';
 
-// Initialize Supabase client for vanilla HTML/JS
-const supabase = window.supabase.createClient(supabaseUrl, supabasePublishableKey);
+// Initialize Supabase client (vanilla JS + CDN compatible)
+const { createClient } = supabase;   // supabase is the global from CDN
+window.supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
 
-console.log('Supabase client initialized for web-obituaries');
+console.log('✅ Supabase client connected successfully for web-obituaries');
